@@ -66,22 +66,20 @@
     .param p2, "hijackFocus"    # Z
 
     .prologue
-    .line 1540
     const/4 v0, 0x0
 
-    const v1, 0x101006d
+    const v1, #android:attr@dropDownListViewStyle#t
 
     invoke-direct {p0, p1, v0, v1}, Landroid/widget/ListView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 1541
     iput-boolean p2, p0, Landroid/widget/ListPopupWindow$DropDownListView;->mHijackFocus:Z
 
-    .line 1543
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Landroid/widget/ListPopupWindow$DropDownListView;->setCacheColorHint(I)V
 
-    .line 1544
+    invoke-direct/range {p0 .. p0}, Landroid/widget/ListPopupWindow$DropDownListView;->mzSetDelayTopOverScrollEnabled()V
+
     return-void
 .end method
 
@@ -726,4 +724,15 @@
     const/4 v0, 0x0
 
     goto :goto_0
+.end method
+
+.method private mzSetDelayTopOverScrollEnabled()V
+    .locals 1
+
+    .prologue
+    const/4 v0, 0x0
+
+    invoke-virtual {p0, v0}, Landroid/widget/ListPopupWindow$DropDownListView;->setDelayTopOverScrollEnabled(Z)V
+
+    return-void
 .end method

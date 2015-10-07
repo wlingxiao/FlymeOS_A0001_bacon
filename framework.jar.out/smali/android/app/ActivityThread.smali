@@ -1385,37 +1385,29 @@
     .param p1, "r"    # Landroid/app/ActivityThread$ActivityClientRecord;
 
     .prologue
-    .line 3166
     iget-object v5, p0, Landroid/app/ActivityThread;->mAvailThumbnailBitmap:Landroid/graphics/Bitmap;
 
-    .line 3168
     .local v5, "thumbnail":Landroid/graphics/Bitmap;
     if-nez v5, :cond_0
 
-    .line 3169
     :try_start_0
     iget v6, p0, Landroid/app/ActivityThread;->mThumbnailWidth:I
 
-    .line 3171
     .local v6, "w":I
     if-gez v6, :cond_4
 
-    .line 3172
     iget-object v8, p1, Landroid/app/ActivityThread$ActivityClientRecord;->activity:Landroid/app/Activity;
 
     invoke-virtual {v8}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v4
 
-    .line 3173
     .local v4, "res":Landroid/content/res/Resources;
-    const v7, 0x1050002
+    const v7, #android:dimen@thumbnail_width#t
 
-    .line 3174
     .local v7, "wId":I
-    const v3, 0x1050001
+    const v3, #android:dimen@thumbnail_height#t
 
-    .line 3175
     .local v3, "hId":I
     invoke-virtual {v4, v7}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -15708,6 +15700,10 @@
 
     move-result-object v0
 
+    move-object/from16 v1, p7
+
+    invoke-direct {p0, v0, v1}, Landroid/app/ActivityThread;->setFlymeThemeResource(Landroid/content/res/Resources;Landroid/app/LoadedApk;)V
+
     return-object v0
 .end method
 
@@ -19123,5 +19119,23 @@
     invoke-virtual {v0, v1}, Landroid/app/ActivityThread$H;->removeMessages(I)V
 
     .line 1894
+    return-void
+.end method
+
+.method private setFlymeThemeResource(Landroid/content/res/Resources;Landroid/app/LoadedApk;)V
+    .locals 1
+    .param p1, "resources"    # Landroid/content/res/Resources;
+    .param p2, "pkgInfo"    # Landroid/app/LoadedApk;
+
+    .prologue
+    if-eqz p1, :cond_0
+
+    invoke-virtual {p2}, Landroid/app/LoadedApk;->getPackageName()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {p1, v0}, Landroid/content/res/Resources;->setFlymeThemeResource(Ljava/lang/String;)V
+
+    :cond_0
     return-void
 .end method

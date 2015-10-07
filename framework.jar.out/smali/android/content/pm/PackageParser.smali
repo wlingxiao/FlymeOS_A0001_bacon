@@ -7,6 +7,7 @@
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
         Landroid/content/pm/PackageParser$1;,
+        Landroid/content/pm/PackageParser$FlymeInjector;,
         Landroid/content/pm/PackageParser$PackageParserException;,
         Landroid/content/pm/PackageParser$ProviderIntentInfo;,
         Landroid/content/pm/PackageParser$ServiceIntentInfo;,
@@ -4646,6 +4647,10 @@
 
     iput v3, v2, Landroid/content/pm/ActivityInfo;->uiOptions:I
 
+    move-object/from16 v0, v23
+
+    invoke-static {v14, v0}, Landroid/content/pm/PackageParser$FlymeInjector;->parseAccessArgsFromResource(Landroid/content/pm/PackageParser$Activity;Landroid/content/res/TypedArray;)V
+
     .line 3168
     const/16 v2, 0x1b
 
@@ -6633,6 +6638,12 @@
     move-object/from16 v0, v17
 
     iput v2, v0, Landroid/content/pm/ActivityInfo;->maxRecents:I
+
+    move-object/from16 v0, v17
+
+    move-object/from16 v1, v25
+
+    invoke-static {v0, v1}, Landroid/content/pm/PackageParser$FlymeInjector;->copyAccessArgs(Landroid/content/pm/ActivityInfo;Landroid/content/pm/PackageParser$Activity;)V
 
     .line 3528
     new-instance v15, Landroid/content/pm/PackageParser$Activity;
@@ -11614,7 +11625,7 @@
 
     .line 2580
     .local v25, "pkgName":Ljava/lang/String;
-    const v3, 0x1070014
+    const v3, #android:array@non_themeable_packages#t
 
     move-object/from16 v0, p2
 
@@ -21797,20 +21808,28 @@
     .param p1, "requiresSeparator"    # Z
 
     .prologue
-    .line 1299
+    invoke-static/range {p0 .. p0}, Landroid/content/pm/PackageParser$FlymeInjector;->validateName(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_flyme_0
+
+    const/4 v5, 0x0
+
+    return-object v5
+
+    :cond_flyme_0
+
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v0
 
-    .line 1300
     .local v0, "N":I
     const/4 v3, 0x0
 
-    .line 1301
     .local v3, "hasSep":Z
     const/4 v2, 0x1
 
-    .line 1302
     .local v2, "front":Z
     const/4 v4, 0x0
 
@@ -22285,4 +22304,111 @@
 
     .line 373
     return-void
+.end method
+
+.method public static generatePackageInfo(Landroid/content/pm/PackageParser$Package;[IIJJLjava/util/HashSet;Landroid/content/pm/PackageUserState;)Landroid/content/pm/PackageInfo;
+    .locals 13
+    .param p0, "p"    # Landroid/content/pm/PackageParser$Package;
+    .param p1, "gids"    # [I
+    .param p2, "flags"    # I
+    .param p3, "firstInstallTime"    # J
+    .param p5, "lastUpdateTime"    # J
+    .param p8, "state"    # Landroid/content/pm/PackageUserState;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/content/pm/PackageParser$Package;",
+            "[IIJJ",
+            "Ljava/util/HashSet",
+            "<",
+            "Ljava/lang/String;",
+            ">;",
+            "Landroid/content/pm/PackageUserState;",
+            ")",
+            "Landroid/content/pm/PackageInfo;"
+        }
+    .end annotation
+
+    .prologue
+    .local p7, "grantedPermissions":Ljava/util/HashSet;, "Ljava/util/HashSet<Ljava/lang/String;>;"
+    new-instance v10, Landroid/util/ArraySet;
+
+    move-object/from16 v0, p7
+
+    invoke-direct {v10, v0}, Landroid/util/ArraySet;-><init>(Ljava/util/Collection;)V
+
+    invoke-static {}, Landroid/os/UserHandle;->getCallingUserId()I
+
+    move-result v12
+
+    move-object v3, p0
+
+    move-object v4, p1
+
+    move v5, p2
+
+    move-wide/from16 v6, p3
+
+    move-wide/from16 v8, p5
+
+    move-object/from16 v11, p8
+
+    invoke-static/range {v3 .. v12}, Landroid/content/pm/PackageParser;->generatePackageInfo(Landroid/content/pm/PackageParser$Package;[IIJJLandroid/util/ArraySet;Landroid/content/pm/PackageUserState;I)Landroid/content/pm/PackageInfo;
+
+    move-result-object v2
+
+    return-object v2
+.end method
+
+.method public static generatePackageInfo(Landroid/content/pm/PackageParser$Package;[IIJJLjava/util/HashSet;Landroid/content/pm/PackageUserState;I)Landroid/content/pm/PackageInfo;
+    .locals 13
+    .param p0, "p"    # Landroid/content/pm/PackageParser$Package;
+    .param p1, "gids"    # [I
+    .param p2, "flags"    # I
+    .param p3, "firstInstallTime"    # J
+    .param p5, "lastUpdateTime"    # J
+    .param p8, "state"    # Landroid/content/pm/PackageUserState;
+    .param p9, "userId"    # I
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/content/pm/PackageParser$Package;",
+            "[IIJJ",
+            "Ljava/util/HashSet",
+            "<",
+            "Ljava/lang/String;",
+            ">;",
+            "Landroid/content/pm/PackageUserState;",
+            "I)",
+            "Landroid/content/pm/PackageInfo;"
+        }
+    .end annotation
+
+    .prologue
+    .local p7, "grantedPermissions":Ljava/util/HashSet;, "Ljava/util/HashSet<Ljava/lang/String;>;"
+    new-instance v10, Landroid/util/ArraySet;
+
+    move-object/from16 v0, p7
+
+    invoke-direct {v10, v0}, Landroid/util/ArraySet;-><init>(Ljava/util/Collection;)V
+
+    move-object v3, p0
+
+    move-object v4, p1
+
+    move v5, p2
+
+    move-wide/from16 v6, p3
+
+    move-wide/from16 v8, p5
+
+    move-object/from16 v11, p8
+
+    move/from16 v12, p9
+
+    invoke-static/range {v3 .. v12}, Landroid/content/pm/PackageParser;->generatePackageInfo(Landroid/content/pm/PackageParser$Package;[IIJJLandroid/util/ArraySet;Landroid/content/pm/PackageUserState;I)Landroid/content/pm/PackageInfo;
+
+    move-result-object v2
+
+    return-object v2
 .end method

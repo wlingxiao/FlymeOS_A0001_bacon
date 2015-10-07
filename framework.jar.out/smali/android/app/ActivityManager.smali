@@ -679,7 +679,7 @@
 
     .line 2411
     .local v1, "res":Landroid/content/res/Resources;
-    const/high16 v4, 0x1050000
+    const/high16 v4, #android:dimen@app_icon_size#i
 
     invoke-virtual {v1, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -972,7 +972,7 @@
 
     move-result-object v0
 
-    const v1, 0x1120018
+    const v1, #android:bool@config_avoidGfxAccel#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -2840,4 +2840,22 @@
     move-exception v0
 
     goto :goto_0
+.end method
+
+.method public removeTask(II)Z
+    .locals 1
+    .param p1, "taskId"    # I
+    .param p2, "flags"    # I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/lang/SecurityException;
+        }
+    .end annotation
+
+    .prologue
+    invoke-virtual {p0, p1}, Landroid/app/ActivityManager;->removeTask(I)Z
+
+    move-result v0
+
+    return v0
 .end method

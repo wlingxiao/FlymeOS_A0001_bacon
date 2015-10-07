@@ -1388,8 +1388,7 @@
     .param p1, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 402
-    const v0, 0x1040462
+    const v0, #android:string@emergency_call_dialog_number_for_display#t
 
     invoke-virtual {p1, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -1397,17 +1396,14 @@
 
     iput-object v0, p0, Lcom/android/internal/telephony/CallerInfo;->phoneNumber:Ljava/lang/String;
 
-    .line 404
-    const v0, 0x1080548
+    const v0, #android:drawable@picture_emergency#t
 
     iput v0, p0, Lcom/android/internal/telephony/CallerInfo;->photoResource:I
 
-    .line 405
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/internal/telephony/CallerInfo;->mIsEmergency:Z
 
-    .line 406
     return-object p0
 .end method
 
@@ -1632,4 +1628,34 @@
     iget-object v0, p0, Lcom/android/internal/telephony/CallerInfo;->phoneNumber:Ljava/lang/String;
 
     goto :goto_0
+.end method
+
+.method public static getCallerInfo(Landroid/content/Context;Ljava/lang/String;J)Lcom/android/internal/telephony/CallerInfo;
+    .locals 2
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "number"    # Ljava/lang/String;
+    .param p2, "subId"    # J
+
+    .prologue
+    long-to-int v0, p2
+
+    invoke-static {p0, p1, v0}, Lcom/android/internal/telephony/CallerInfo;->getCallerInfo(Landroid/content/Context;Ljava/lang/String;I)Lcom/android/internal/telephony/CallerInfo;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method markAsVoiceMail(J)Lcom/android/internal/telephony/CallerInfo;
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/CallerInfo;->markAsVoiceMail(I)Lcom/android/internal/telephony/CallerInfo;
+
+    move-result-object v0
+
+    return-object v0
 .end method

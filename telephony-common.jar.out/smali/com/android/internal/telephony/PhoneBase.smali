@@ -604,7 +604,7 @@
 
     move-result-object v3
 
-    const v4, 0x1120058
+    const v4, #android:bool@config_voice_capable#t
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -1629,7 +1629,7 @@
 
     move-result-object v8
 
-    const v9, 0x107005a
+    const v9, #android:array@carrier_properties#t
 
     invoke-virtual {v8, v9}, Landroid/content/res/Resources;->getTextArray(I)[Ljava/lang/CharSequence;
 
@@ -8158,5 +8158,23 @@
 
     .line 1213
     :cond_0
+    return-void
+.end method
+
+.method public registerForVoiceCallIncomingIndication(Landroid/os/Handler;ILjava/lang/Object;)V
+    .locals 0
+    .param p1, "h"    # Landroid/os/Handler;
+    .param p2, "what"    # I
+    .param p3, "obj"    # Ljava/lang/Object;
+
+    .prologue
+    return-void
+.end method
+
+.method public unregisterForVoiceCallIncomingIndication(Landroid/os/Handler;)V
+    .locals 0
+    .param p1, "h"    # Landroid/os/Handler;
+
+    .prologue
     return-void
 .end method

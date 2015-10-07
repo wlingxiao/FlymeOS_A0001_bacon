@@ -1235,3 +1235,164 @@
 
     goto :goto_0
 .end method
+
+.method public getCompleteVoiceMailNumberForSubscriber(J)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/PhoneSubInfoController;->getCompleteVoiceMailNumberForSubscriber(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getGroupIdLevel1ForSubscriber(J)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/PhoneSubInfoController;->getGroupIdLevel1ForSubscriber(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getIccSerialNumberForSubscriber(J)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/PhoneSubInfoController;->getIccSerialNumberForSubscriber(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getIccSimChallengeResponse(JILjava/lang/String;)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # J
+    .param p3, "appType"    # I
+    .param p4, "data"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0, p3, p4}, Lcom/android/internal/telephony/PhoneSubInfoController;->getIccSimChallengeResponse(IILjava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getImeiForSubscriber(J)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/PhoneSubInfoController;->getImeiForSubscriber(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getLine1AlphaTagForSubscriber(J)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/PhoneSubInfoController;->getLine1AlphaTagForSubscriber(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getLine1NumberForSubscriber(J)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/PhoneSubInfoController;->getLine1NumberForSubscriber(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getMsisdnForSubscriber(J)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/PhoneSubInfoController;->getMsisdnForSubscriber(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getSubscriberIdForSubscriber(J)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/PhoneSubInfoController;->getSubscriberIdForSubscriber(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getVoiceMailAlphaTagForSubscriber(J)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/PhoneSubInfoController;->getVoiceMailAlphaTagForSubscriber(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getVoiceMailNumberForSubscriber(J)Ljava/lang/String;
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/PhoneSubInfoController;->getVoiceMailNumberForSubscriber(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

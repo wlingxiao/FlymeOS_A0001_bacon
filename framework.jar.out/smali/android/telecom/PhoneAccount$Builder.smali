@@ -571,3 +571,13 @@
     :cond_0
     return-object p0
 .end method
+
+.method public setIconResId(I)Landroid/telecom/PhoneAccount$Builder;
+    .locals 0
+    .param p1, "value"    # I
+
+    .prologue
+    iput p1, p0, Landroid/telecom/PhoneAccount$Builder;->mIconResId:I
+
+    return-object p0
+.end method
