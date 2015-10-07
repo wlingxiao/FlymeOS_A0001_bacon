@@ -1079,12 +1079,14 @@
     invoke-virtual/range {v3 .. v14}, Landroid/app/ResourcesManager;->getTopLevelResources(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;ILjava/lang/String;Landroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;Landroid/os/IBinder;Landroid/content/Context;Z)Landroid/content/res/Resources;
 
     move-result-object v16
-
+    
     move-object/from16 v0, p0
 
     move-object/from16 v1, p3
+    
+    move-object/from16 v2, v16
 
-    invoke-direct {v0, v14, v1}, Landroid/app/ContextImpl;->setFlymeThemeResource(Landroid/content/res/Resources;Landroid/app/LoadedApk;)V
+    invoke-direct {v0, v2, v1}, Landroid/app/ContextImpl;->setFlymeThemeResource(Landroid/content/res/Resources;Landroid/app/LoadedApk;)V
 
     :cond_4
     :goto_0
